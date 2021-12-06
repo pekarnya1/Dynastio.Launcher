@@ -1,0 +1,36 @@
+[
+  {
+    "Name": "Main",
+    "BaseAddress": "https://auth.dynast.io/",
+    "LeaderboardCoin": "api/",
+    "LeaderboardScore": "",
+    "UserProfile": "api/",
+    "UserChest": "api/",
+    "UserStat": "api/",
+    "UserProfileDetails": "api/",
+    "ServersBaseAddress": "https://announcement.dynast.io/",
+    "Servers": "#",
+    "AllServers": "all",
+    "ServersWithPlayers": "",
+    "AllServersWithPlayers": "",
+    "Version": "https://dynast.io/version.json",
+    "Changelog": "https://dynast.io/changelog.txt"
+  },
+  {
+    "Name": "Nightly",
+    "BaseAddress": "https://auth.nightly.dynast.io/",
+    "LeaderboardCoin": "api/",
+    "LeaderboardScore": "",
+    "UserProfile": "api/",
+    "UserChest": "api/",
+    "UserStat": "api/",
+    "UserProfileDetails": "api/",
+    "ServersBaseAddress": "https://announcement.dynast.io/",
+    "Servers": "#",
+    "AllServers": "all",
+    "ServersWithPlayers": "",
+    "AllServersWithPlayers": "",
+    "Version": "https://nightly.dynast.io/version.json",
+    "Changelog": "https://nightly.dynast.io/changelog.txt"
+  }
+]

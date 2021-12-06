@@ -1,0 +1,50 @@
+﻿﻿
+* {
+    font-family: Vazir !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 9pt;
+    background-color: rgb(16 76 3);
+    user-select: none;
+    overflow: hidden;
+}
+
+.Wrapper {
+    background-color: #17a902;
+    font-size: 20px;
+    color: antiquewhite;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.Header {
+    text-align: center;
+    padding: 50px;
+    margin-top: 20px;
+}
+
+    .Header > img {
+        width: 60%;
+    }
+
+
+.Bottom {
+    text-align: center;
+    margin: 40px;
+}
+
+.BottomContent {
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-flex;
+    background-color: #003600;
+    max-width: 90%;
+    overflow: overlay;
+    gap: 10px;
+    margin: auto;
+    width: 100%;
+    border: 3px solid green;
+}

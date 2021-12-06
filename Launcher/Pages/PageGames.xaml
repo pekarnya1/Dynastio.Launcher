@@ -1,0 +1,69 @@
+﻿<Page x:Class="Launcher.Pages.PageGames"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Launcher.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageDynastioGames">
+
+    <Grid>
+        <Grid x:Name="GridMain" Background="#FFE7E7E7">
+
+            <Border Margin="10,37,10,10" Background="White" CornerRadius="10,10,10,10" >
+
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" >
+                    <WrapPanel x:Name="PanelItems" Orientation="Vertical" ItemHeight="130" Margin="4,4,4,4" ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+                </ScrollViewer>
+
+            </Border>
+
+            <Label Content="Game Manager" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.202,-0.013" Width="247" FontWeight="Bold" FontSize="16" FontFamily="Calibri"/>
+
+
+            <Button Content="Add" x:Name="BtnAdd" Click="BtnAdd_Click" Margin="0,5,10,0" Height="27" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98" BorderBrush="{x:Null}" Background="#FFEABD22" FontWeight="Normal"/>
+
+
+
+        </Grid>
+        <Grid x:Name="GridAdd" Background="#FF5B5B5B" d:IsHidden="True">
+            <Border  Margin="121,57,123,0" Background="#FFF8F8F8" CornerRadius="10,10,10,10" BorderBrush="White" BorderThickness="4,4,4,4" Height="313" VerticalAlignment="Top">
+                <Grid Margin="4,4,4,0" Height="295" VerticalAlignment="Top">
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FFE9E9E9" Opacity="0.01"/>
+                    </Grid.Background>
+                    <ComboBox x:Name="ComboBoxItems" DisplayMemberPath="details" Margin="29,67,106,0" VerticalAlignment="Top" Height="31" BorderThickness="2,2,2,2" Background="#FFDFDFDF"/>
+                    <Button x:Name="BtnCreate" Content="Create" Click="BtnCreate_Click" BorderBrush="{x:Null}" Background="#FFEDEDED" Height="33" Width="163" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,13,23"/>
+                    <Button x:Name="BtnBack" Content="Back" Click="BtnBack_Click" BorderBrush="{x:Null}" Background="Gainsboro" Height="33" VerticalAlignment="Bottom" Width="102" Margin="0,0,184,23" HorizontalAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="29,43,0,0" TextWrapping="Wrap" Text="Select a game" VerticalAlignment="Top" Height="19" Width="79"/>
+                    <CheckBox x:Name="CheckBoxUpdateAble" Content="UpdateAble" HorizontalAlignment="Left" Margin="29,155,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <TextBlock Margin="29,173,0,0"  TextWrapping="Wrap" Text="Show the update for this instance when a new update is ready." VerticalAlignment="Top" Height="19" Foreground="#FF686868" HorizontalAlignment="Left" Width="448"/>
+                    <CheckBox x:Name="CheckBoxPrivateServers" Content="Include Private Servers" HorizontalAlignment="Left" Margin="29,113,0,0" VerticalAlignment="Top"/>
+                    <TextBlock Margin="29,131,0,0"  TextWrapping="Wrap" Text="Show private servers in servers list" VerticalAlignment="Top" Height="19" Foreground="#FF686868" HorizontalAlignment="Left" Width="448"/>
+
+                </Grid>
+            </Border>
+
+        </Grid>
+        <Grid x:Name="GridModify" Background="#FF5B5B5B" d:IsHidden="True">
+            <Border  Margin="121,57,123,0" Background="#FFF8F8F8" CornerRadius="10,10,10,10" BorderBrush="White" BorderThickness="4,4,4,4" Height="313" VerticalAlignment="Top">
+                <Grid Margin="4,4,4,0" Height="295" VerticalAlignment="Top">
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FFE9E9E9" Opacity="0.01"/>
+                    </Grid.Background>
+                    <Button x:Name="BtnModifyConfirm" Content="Confirm" Click="BtnModifyConfirm_Click"  BorderBrush="{x:Null}" Background="#FFEDEDED" Height="33" Width="163" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,13,23"/>
+                    <Button x:Name="BtnModifyBack1" Content="Back" Click="BtnBack_Click" BorderBrush="{x:Null}" Background="Gainsboro" Height="33" VerticalAlignment="Bottom" Width="102" Margin="0,0,184,23" HorizontalAlignment="Right"/>
+                    <CheckBox x:Name="CheckBoxModifyUpdateAble" Content="UpdateAble" HorizontalAlignment="Left" Margin="29,100,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <TextBlock Margin="29,118,0,0"  TextWrapping="Wrap" Text="Show the update for this instance when a new update is ready." VerticalAlignment="Top" Height="19" Foreground="#FF686868" HorizontalAlignment="Left" Width="448"/>
+                    <CheckBox x:Name="CheckBoxModifyPrivateServers" Content="Include Private Servers" HorizontalAlignment="Left" Margin="29,58,0,0" VerticalAlignment="Top"/>
+                    <TextBlock Margin="29,76,0,0"  TextWrapping="Wrap" Text="Show private servers in servers list" VerticalAlignment="Top" Height="19" Foreground="#FF686868" HorizontalAlignment="Left" Width="448"/>
+                    <Button x:Name="BtnReinstall" Content="Reinstall" Click="BtnReinstall_Click"  BorderBrush="{x:Null}" Background="#FFE6E6E6" Height="33" Width="119" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,166,0,0"/>
+                    <TextBlock Margin="29,142,0,0"  TextWrapping="Wrap" Text="Reinstall the game. " VerticalAlignment="Top" Height="19" Foreground="Black" HorizontalAlignment="Left" Width="448"/>
+
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Grid>
+</Page>

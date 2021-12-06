@@ -1,0 +1,9 @@
+﻿1.0.2 - 2021-12-04
+- Adding Discord Rich Presence
+
+1.0.1 - 2021-12-03
+- Support multiple dyanstio accounts
+- Fixing Bugs
+
+1.0.0 - 2021-11-28 
+- Initial release
