@@ -5,41 +5,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Launcher.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="157.948" d:DesignWidth="709.366" Grid.IsSharedSizeScope="True" Background="#FFFAFAFA">
-    <Border CornerRadius="5,5,5,5" Background="White" BorderBrush="#FF2E8000" BorderThickness="5,0,0,0" Margin="5,5,5,5">
-        <Grid>
+             d:DesignHeight="300" d:DesignWidth="425" MinWidth="300" MinHeight="300" Grid.IsSharedSizeScope="True" Background="#FFFAFAFA">
+    <Border x:Name="BorderMain" CornerRadius="5,5,5,5" Background="White" BorderBrush="#FFFF8F02" BorderThickness="5,0,0,0" Margin="5,5,5,5">
+        <Grid Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="156.88"/>
+                <ColumnDefinition Width="157.968"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="121.802"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="LabelDetails" Content="Details" Margin="4,94,9,0" VerticalAlignment="Top" FontSize="12" Grid.Column="1" Foreground="DimGray"/>
-            <TextBlock x:Name="LabelDescription" Text="Description" Margin="3,34,9,0" FontSize="10" Grid.Column="1" Height="28" VerticalAlignment="Top"/>
 
-            <Button x:Name="BtnAction" Content="Action" Click="BtnAction_Click"  Margin="0,85,0,0" Height="29" BorderBrush="{x:Null}" Grid.Column="2" Width="114" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Button x:Name="BtnRemove" Content="Remove" Click="BtnRemove_Click" Margin="0,117,0,0" Height="29" BorderBrush="{x:Null}" Grid.Column="2" Width="114" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Border Background="#FFEFEFEF" CornerRadius="5,5,5,5" BorderThickness="1,1,1,1" Margin="0,0,2,0">
+            <Border x:Name="BorderInformation" Background="#FFEFEFEF" CornerRadius="5,5,5,5" BorderThickness="1,1,1,1" Margin="0,0,2,0">
+              
                 <Grid>
-                    <Grid.Background>
-                        <SolidColorBrush Color="Black" Opacity="0.01"/>
-                    </Grid.Background>
-                    <Grid Name="GridLevel" Height="32" Margin="6,40,3,0" VerticalAlignment="Top">
-                        <Image HorizontalAlignment="Left" Width="30" Source="/Resources/Images/build_icon.png" Margin="0,4,0,0"/>
-                        <Label x:Name="LabelLevel" Content="0" Margin="79,0,5,0" VerticalAlignment="Center" FontSize="12" Foreground="#FF9D5101" FontWeight="Bold"/>
-                        <Label Content="Level" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="#FF7A7A7A" Margin="35,0,0,0"/>
-                    </Grid>
-                    <Grid Name="GridCoin" Height="32" Margin="4,4,5,0" VerticalAlignment="Top">
-                        <Image HorizontalAlignment="Left" Width="37" Source="/Resources/Images/coins.png"/>
-                        <Label x:Name="LabelCoin" Content="0" Margin="79,0,5,0" VerticalAlignment="Center" FontSize="12" Foreground="#FF9D5101" FontWeight="Bold"/>
-                        <Label Content="Coins" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="#FF7A7A7A" Margin="35,0,0,0"/>
-                    </Grid>
+                    <Button x:Name="BtnAction" Content="Action" Click="BtnAction_Click"  Margin="20,0,20,30" Height="25" BorderBrush="{x:Null}" Width="114" VerticalAlignment="Bottom"/>
+                    <Button x:Name="BtnRemove" Content="Remove" Click="BtnRemove_Click" Margin="20,236,20,4" Height="25" BorderBrush="{x:Null}" Width="114" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
+                    <WrapPanel Margin="10,10,10,60" Orientation="Vertical">
+                        <Label x:Name="LabelTittle" Content="Tittle" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Foreground="#FF021A02" Width="132"/>
+                        <TextBlock x:Name="LabelDescription" Text="Description" FontSize="10" VerticalAlignment="Top" Foreground="#FF270202"/>
+                        <TextBlock x:Name="LabelDetails" Text="Details" VerticalAlignment="Top" FontSize="10" Foreground="#FF8B8B8B" FontWeight="Bold"/>
 
-                    <Button x:Name="BtnSet" Content="set" Click="BtnSet_Click"   HorizontalAlignment="Left" Margin="112,79,0,0" VerticalAlignment="Top" Width="33" BorderBrush="{x:Null}" Height="18" Padding="0,0,0,0" Background="#FFE6E6E6" Foreground="#FF606060"/>
-                    <TextBox x:Name="TextBoxData" HorizontalAlignment="Left" Margin="4,79,0,0" TextWrapping="Wrap" Text="data" VerticalAlignment="Top" Width="103" Background="#FFE6E6E6" BorderBrush="{x:Null}" Foreground="#FF797979" MaxLines="1" MaxHeight="20"/>
+                    </WrapPanel>
+
+                </Grid>
+            </Border>
+
+            <Border x:Name="BorderDataSet" Background="White" Margin="3,0,10,6" BorderBrush="#FFD2D2D2" BorderThickness="1,1,1,1" CornerRadius="3,3,3,3" Grid.Column="1" Height="24" VerticalAlignment="Bottom">
+                <Grid>
+
+                    <TextBox Margin="3,0,30,0" x:Name="TextBoxData" TextWrapping="Wrap" Text="" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC5C5C5" MaxLines="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                    <Button x:Name="BtnSet" Content="set" Click="BtnSet_Click" BorderBrush="{x:Null}" Padding="0,0,0,0" Background="#FFDDDDDD" Foreground="#FF3C3C3C" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="30"/>
+                    <Label Content="data" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="3,3,3,3" Foreground="#FFBBBBBB"/>
+
                 </Grid>
 
             </Border>
-            <WrapPanel Height="22" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Width="225" Margin="3,0,0,1">
+
+            <WrapPanel x:Name="PanelBadges" Margin="11,0,46,34" Grid.Column="1" ItemHeight="20" Height="20" VerticalAlignment="Bottom">
 
                 <Image x:Name="PBadministrator" HorizontalAlignment="Right"  Source="/Resources/Images/_badges/administrator.png"/>
                 <Image x:Name="PBdeveloper" HorizontalAlignment="Right"  Source="/Resources/Images/_badges/developer.png"/>
@@ -50,9 +50,140 @@
                 <Image x:Name="PByoutuber" HorizontalAlignment="Right" Source="/Resources/Images/_badges/youtuber.png"/>
 
             </WrapPanel>
-            <Label x:Name="LabelTittle" Content="Tittle" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Margin="0,5,0,0" Grid.Column="1" HorizontalAlignment="Left" Width="405"/>
-            <TextBlock Margin="3,98,2,-3" TextWrapping="Wrap" Text="This Part require data from Dynastio Bot, for making it without token, we need game developers to Cooperation. " Foreground="#FF919191" FontSize="9" FontWeight="Bold"/>
+            <Border x:Name="BorderProfileDetails" Grid.Column="1" Margin="11,11,10,0" Background="#FFF3F3F3" BorderBrush="#FFA6A6A6" BorderThickness="3,0,0,0" CornerRadius="2,2,2,2" Height="41" VerticalAlignment="Top">
+                <Grid >
+                    <Grid x:Name="GridLevel" Height="32" Margin="124,0,0,0" VerticalAlignment="Center">
+                        <Image HorizontalAlignment="Left" Width="30" Source="/Resources/Images/build_icon.png" Margin="0,4,0,0"/>
+                        <Label x:Name="LabelLevel" Content="0" Margin="79,0,5,0" VerticalAlignment="Center" FontSize="12" Foreground="#FF474747" FontWeight="Bold"/>
+                        <Label Content="Level" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="#FF474747" Margin="35,0,0,0"/>
+                    </Grid>
+                    <Grid x:Name="GridCoin" Height="32" Margin="0,0,100,0" VerticalAlignment="Center">
+                        <Image HorizontalAlignment="Left" Width="37" Source="/Resources/Images/coins.png"/>
+                        <Label x:Name="LabelCoin" Content="0" Margin="79,0,5,0" VerticalAlignment="Center" FontSize="12" Foreground="#FF474747" FontWeight="Bold"/>
+                        <Label Content="Coins" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="#FF474747" Margin="35,0,0,0"/>
 
+
+                    </Grid>
+                </Grid>
+            </Border>
+            <Border x:Name="BorderPchest" Grid.Column="1" Margin="10,0,0,0" Background="#FFF3F3F3" BorderBrush="#FFA6A6A6" BorderThickness="2,2,2,2" CornerRadius="1,1,1,1" HorizontalAlignment="Left" Width="231" Height="174" VerticalAlignment="Center">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="36*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="46*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Column="0">
+                        <Image Name="ImagePchestSlot1">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Column="1">
+                        <Image Name="ImagePchestSlot2">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Column="2">
+                        <Image Name="ImagePchestSlot3">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Column="3">
+                        <Image Name="ImagePchestSlot4">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Column="4">
+                        <Image Name="ImagePchestSlot5">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="1" Grid.Column="0">
+                        <Image Name="ImagePchestSlot6">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="1" Grid.Column="1">
+                        <Image Name="ImagePchestSlot7">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="1" Grid.Column="2">
+                        <Image Name="ImagePchestSlot8">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="1" Grid.Column="3">
+                        <Image Name="ImagePchestSlot9">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="1" Grid.Column="4">
+                        <Image Name="ImagePchestSlot10">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="2" Grid.Column="0">
+                        <Image Name="ImagePchestSlot11">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="2" Grid.Column="1">
+                        <Image Name="ImagePchestSlot12">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="2" Grid.Column="2">
+                        <Image Name="ImagePchestSlot13">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="2" Grid.Column="3">
+                        <Image Name="ImagePchestSlot14">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="2" Grid.Column="4">
+                        <Image Name="ImagePchestSlot15">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="3" Grid.Column="0">
+                        <Image Name="ImagePchestSlot16">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="3" Grid.Column="1">
+                        <Image Name="ImagePchestSlot17">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="3" Grid.Column="2">
+                        <Image Name="ImagePchestSlot18">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="3" Grid.Column="3">
+                        <Image Name="ImagePchestSlot19">
+
+                        </Image>
+                    </Border>
+                    <Border Margin="2,2,2,2" BorderBrush="#FF6C6C6C" BorderThickness="0,0,0,0" CornerRadius="3,3,3,3" Background="#FFC9C9C9" Grid.Row="3" Grid.Column="5">
+                        <Image Name="ImagePchestSlot20">
+
+                        </Image>
+                    </Border>
+
+                </Grid>
+            </Border>
 
         </Grid>
     </Border>

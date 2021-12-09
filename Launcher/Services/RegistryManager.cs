@@ -48,13 +48,13 @@ namespace Launcher.Services
         public static string ReadValue(string subKey, string key)
         {
             string value = "";
-            using (RegistryKey Subkey = Registry.CurrentUser.OpenSubKey(subKey))
+            using (RegistryKey reg = Registry.CurrentUser.OpenSubKey(subKey))
             {
 
-                if (Subkey != null)
+                if (reg != null)
                 {
-                    value = Subkey.GetValue(key).ToString();
-                    Subkey.Close();
+                    value = reg.GetValue(key).ToString();
+                    reg.Close();
                 }
             }
             return value;

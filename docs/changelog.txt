@@ -1,4 +1,14 @@
-﻿1.0.2 - 2021-12-04
+﻿1.0.3 - 2021-12-09
+- Adding nightly change log.
+- Remove change server before playing.
+- Adding Personal-Chest
+- Better UI for play page
+- Better UI for accounts
+- Fixing Bug private servers
+- Fixing Bug when click on Play
+- Fixing Bugs
+
+1.0.2 - 2021-12-04
 - Adding Discord Rich Presence
 
 1.0.1 - 2021-12-03

@@ -38,12 +38,20 @@ namespace Launcher.Services
             selectedServerNameByte[selectedServerNameByte.Length - 1] = 0;
             RegistryManager.SetValue(RegistryManager.RegDynastio, RegistryManager.KeySelectedServer, selectedServerNameByte);
         }
+        public static string GetSelectedServer()
+        {
+            var value = RegistryManager.ReadValue(RegistryManager.RegDynastio, RegistryManager.KeySelectedServer);
+            return value;
+        }
         public static Task OpenGameAsync(IGame game)
         {
             using (Process myProcess = new Process())
             {
                 myProcess.StartInfo.UseShellExecute = false;
                 myProcess.StartInfo.FileName = $@"bin\games\{game.Id}\dynast.io.exe";
+
+                if (game.IncludePrivateServers) myProcess.StartInfo.Arguments = "include-custom true";
+
                 myProcess.StartInfo.CreateNoWindow = true;
                 myProcess.Start();
                 myProcess.WaitForExit();
@@ -74,6 +82,7 @@ namespace Launcher.Services
 
         public async Task CheckGameUpdatesAsync()
         {
+
             var currentMain = await _dynastClient.Main.GetCurrentVersionAsync();
             var currentNightly = await _dynastClient.Nightly.GetCurrentVersionAsync();
 
@@ -101,6 +110,7 @@ namespace Launcher.Services
                     };
                 }
             }
+
         }
     }
 }

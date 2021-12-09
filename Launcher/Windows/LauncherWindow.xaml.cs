@@ -43,7 +43,7 @@ namespace Launcher.Windows
         public void Initialize()
         {
             this._rpcManager.UpdateActivityToLauncher("On Launcher", "Not playing yet");
-            this.BtnAppVersion.Content = _appManager.Configuration.Version + " v";
+            this.BtnAppVersion.Content = App.version + " v";
             this.Closed += delegate
             {
                 this.Visibility = Visibility.Collapsed;
@@ -61,10 +61,9 @@ namespace Launcher.Windows
                 case "BtnManager": this.FrameMain.Content = _pageDynastio; break;
                 case "BtnAboutUs": this.FrameMain.Content = new PageAbout(_appManager.Configuration); break;
                 case "BtnAccounts": this.FrameMain.Content = new PageAccounts(_services); break;
-
-                case "BtnChangeLogGame": ShowPage(_appManager.Configuration.ChangeLog); break;
-                case "BtnChangeLogApp": ShowPage(_appManager.Configuration.AppChangeLog); break;
-                case "BtnAppVersion": ShowPage(_appManager.Configuration.SiteUrl); break;
+                case "BtnChangeLogGame": ShowPage(App.dynastioChangelog); break;
+                case "BtnChangeLogGameNightly": ShowPage(App.dynastioNightlyChangelog); break;
+                case "BtnChangeLogApp": ShowPage(App.appChangesUrl); break;
             }
         }
         void ShowPage(string url)

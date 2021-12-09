@@ -10,9 +10,7 @@
     <Grid Background="White">
         <TextBlock Text="Dynastio Launcher" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.724,-0.36" Width="420" FontWeight="Bold" Height="30" Margin="200,34,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,70,0,0" TextWrapping="Wrap" Text="a open-source launcher focused on dynast.io " VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="162" VerticalAlignment="Top" Width="165" Source="/Resources/Images/icon.ico" Margin="19,26,0,0"/>
-        <Button x:Name="BtnDiscord" Click="BtnDiscord_Click" Content="Discord" HorizontalAlignment="Left" Margin="476,157,0,0" VerticalAlignment="Top" Height="36" Width="134" Background="#FFE6E6E6" BorderBrush="White"/>
-        <Button x:Name="BtnSite" Click="BtnSite_Click" Content="Site" HorizontalAlignment="Left" Margin="337,157,0,0" VerticalAlignment="Top" Height="36" Width="134" Background="#FFE6E6E6" BorderBrush="White"/>
-        <Button x:Name="BtnSource" Click="BtnSource_Click" Content="Source" HorizontalAlignment="Left" Margin="198,157,0,0" VerticalAlignment="Top" Height="36" Width="134" Background="#FFE6E6E6" BorderBrush="White"/>
+        <Image HorizontalAlignment="Left" Height="162" VerticalAlignment="Top" Width="165" Source="/Resources/Images/dynastio01.jpg" Margin="19,26,0,0"/>
+        <Button x:Name="BtnDiscord" Click="BtnDiscord_Click" Content="Discord" HorizontalAlignment="Left" Margin="203,154,0,0" VerticalAlignment="Top" Height="36" Width="134" Background="#FF232323" BorderBrush="White" Foreground="White" FontWeight="Bold"/>
     </Grid>
 </Page>

@@ -11,14 +11,15 @@
         <Grid FlowDirection="LeftToRight" HorizontalAlignment="Left" Width="130" Grid.RowSpan="2" Background="#FFE7E7E7" >
             <Button  x:Name="BtnPlay" Content="Play" Click="Button_Click" HorizontalAlignment="Stretch" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="37" Width="130" BorderBrush="{x:Null}"/>
             <Button  x:Name="BtnManager" Content="Manager" Click="Button_Click" HorizontalAlignment="Stretch" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="34" Width="130" BorderBrush="{x:Null}" Margin="0,37,0,0"/>
-            <Button  x:Name="BtnAboutUs" Content="About Us" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="21" Width="130" BorderBrush="{x:Null}" Margin="0,150,0,0" Background="#FFE7E7E7" Foreground="#FF6E6E6E" FontSize="10"/>
-            <Button  x:Name="BtnChangeLogGame" Content="Game Change Log" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="21" Width="130" BorderBrush="{x:Null}" Margin="0,107,0,0" Foreground="#FF6E6E6E" Background="#FFE7E7E7" FontSize="10"/>
-            <Button  x:Name="BtnChangeLogApp" Content="App Change Log" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="19" Width="130" BorderBrush="{x:Null}" Margin="0,130,0,0" Foreground="#FF6E6E6E" Background="#FFE7E7E7" FontSize="10"/>
-            <Button  x:Name="BtnAppVersion" Click="Button_Click" Content="v0.0" VerticalAlignment="Bottom" RenderTransformOrigin="0.328,0.47" Height="24" Width="130" BorderBrush="{x:Null}" Margin="0,410,0,0" Foreground="#FF6E6E6E"/>
             <Button  x:Name="BtnAccounts" Content="Accounts" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="34" Width="130" BorderBrush="{x:Null}" Margin="0,71,0,0"/>
+            <Button  x:Name="BtnChangeLogGame" Content="Game Change Log" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="21" Width="130" BorderBrush="{x:Null}" Margin="0,107,0,0" Foreground="#FF6E6E6E" Background="#FFE7E7E7" FontSize="10"/>
+            <Button  x:Name="BtnChangeLogGameNightly" Content="Nightly Changes" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="21" Width="130" BorderBrush="{x:Null}" Margin="0,130,0,0" Foreground="#FF6E6E6E" Background="#FFE7E7E7" FontSize="10"/>
+            <Button  x:Name="BtnChangeLogApp" Content="App Changes" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="19" Width="130" BorderBrush="{x:Null}" Margin="0,153,0,0" Foreground="#FF6E6E6E" Background="#FFE7E7E7" FontSize="10"/>
+            <Button  x:Name="BtnAboutUs" Content="About Us" Click="Button_Click" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.47" Height="21" Width="130" BorderBrush="{x:Null}" Margin="0,173,0,0" Background="#FFE7E7E7" Foreground="#FF6E6E6E" FontSize="10"/>
+            <Button  x:Name="BtnAppVersion" Click="Button_Click" Content="v0.0" VerticalAlignment="Bottom"  Height="24" Width="130" BorderBrush="{x:Null}" Margin="0,410,0,0" Foreground="#FF6E6E6E"/>
 
         </Grid>
-        <Frame x:Name="FrameMain" Content="Web Site" Margin="130,0,0,0" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Frame x:Name="FrameMain" Content="" Margin="130,0,0,0" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
 
 

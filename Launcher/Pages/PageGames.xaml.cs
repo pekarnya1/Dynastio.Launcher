@@ -31,15 +31,26 @@ namespace Launcher.Pages
         private readonly IServiceProvider _services;
         private readonly AppManager _appManager;
         private readonly DynastClient _dynastClient;
-
+        private readonly GameManager _gameManager;
         public PageGames(IServiceProvider service)
         {
             this._services = service;
             this._appManager = service.GetRequiredService<AppManager>();
             this._dynastClient = _services.GetRequiredService<DynastClient>();
+            this._gameManager = _services.GetRequiredService<GameManager>();
+
             InitializeComponent();
 
-            _ = Task.Run(async () => await AddComboBoxVersions());
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    await _gameManager.CheckGameUpdatesAsync();
+
+                    await AddComboBoxVersions();
+                }
+                catch { }
+            });
 
             ChangeView(this.GridMain);
         }
@@ -47,7 +58,11 @@ namespace Launcher.Pages
         {
             foreach (var g in _appManager.Configuration.DynastioGames.OrderByDescending(a => a.GetType() == typeof(GameUpdate)))
             {
-                if (PanelItems.Children.OfType<GameItemControl>().Where(a => a.GameId == g.Id).Any()) continue;
+                if (PanelItems.Children.OfType<GameItemControl>().Where(a => a.GameId == g.Id).Any())
+                {
+
+                    continue;
+                };
                 PanelItems.Children.Add(new GameItemControl(_services, this, g));
             }
             if (PanelItems.Children.OfType<GameItemControl>().Count() == 0)

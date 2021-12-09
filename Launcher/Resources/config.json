@@ -1,13 +1,4 @@
 {
-  "Version": "1.0.0-beta",
-  "GitConfigurationUrl": "https://dynast-io.github.io/Launcher/assets/data/config.json",
-  "SiteUrl": "https://dynast-io.github.io/Launcher/",
-  "DiscorUrl": "https://discord.gg/x5j4cZtnWR",
-  "SourceUrl": "https://github.com/Dynast-io/Launcher",
-  "DynastioUrl": "http://dynast.io/",
-  "NightlyUrl": "https://nightly.dynast.io/",
-  "ChangeLog": "https://dynast.io/changelog.txt",
-  "AppChangeLog": "https://dynast-io.github.io/Launcher/changelog.txt",
   "DynastioGames": [
 
   ],

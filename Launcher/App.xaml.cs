@@ -19,6 +19,11 @@ namespace Launcher
     /// </summary>
     public partial class App : Application
     {
+        public const string version = "1.0.3";
+        public const string discordurl = "https://discord.gg/x5j4cZtnWR";
+        public const string dynastioChangelog = "https://dynast.io/changelog.txt";
+        public const string dynastioNightlyChangelog = "https://nightly.dynast.io/changelog.txt";
+        public const string appChangesUrl = "https://galalzhaleh.github.io/Dynastio.Launcher/changelog.txt";
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             try
@@ -46,13 +51,12 @@ namespace Launcher
                 services.GetRequiredService<RpcManager>().Intialize();
 
                 services.GetRequiredService<ProfileManager>();
-                var game = services.GetRequiredService<GameManager>();
+                services.GetRequiredService<GameManager>();
+
                 var app = services.GetRequiredService<AppManager>();
                 await app.InitializeAsync();
 
                 AppManager.CreateDirectoriesIfNotExist();
-
-                await game.CheckGameUpdatesAsync();
 
                 var window = new LauncherWindow(services);
                 window.ShowDialog();

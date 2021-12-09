@@ -31,17 +31,9 @@ namespace Launcher.Pages
 
         private void BtnDiscord_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(_configuration.DiscorUrl);
+            System.Diagnostics.Process.Start(App.discordurl);
         }
 
-        private void BtnSite_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(_configuration.SiteUrl);
-        }
-
-        private void BtnSource_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(_configuration.SourceUrl);
-        }
+      
     }
 }

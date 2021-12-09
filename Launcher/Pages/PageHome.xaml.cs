@@ -45,8 +45,8 @@ namespace Launcher.Pages
         {
             try
             {
-                this._rpcManager.UpdateActivityToLauncher("On Launcher", "Play Window");
                 TextBoxNickname.Text = GameManager.GetPlayerNickname();
+                this._rpcManager.UpdateActivityToLauncher("On Launcher", "Play Window");
             }
             catch { };
         }
@@ -56,21 +56,6 @@ namespace Launcher.Pages
             if (game != null)
             {
                 LabelNotice.Text = $"Private-Servers are {(game.IncludePrivateServers ? "On" : "Off")}, You can change it from Manager.";
-
-                var servers = ServerViewModel.ConvertForSelectMenu(_dynastClient.Main.GetOnlineServers(ServerType.All).ToList());
-                servers = servers.Where(a => game.Version.Contains(a.Version)).ToList();
-
-                if (!game.IncludePrivateServers) servers = servers.Where(a => a.IsPrivate == false).ToList();
-                if (servers == null || servers.Count < 1)
-                {
-                    BtnPlay.IsEnabled = false;
-                    LabelNotice.Text = "No any online server found for this game, change your selected game from Manager.";
-                    return;
-                }
-
-                var data = new ListCollectionView(servers);
-                data.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
-                this.ComboBoxServers.ItemsSource = data;
 
                 BtnPlay.IsEnabled = true;
                 return;
@@ -88,11 +73,12 @@ namespace Launcher.Pages
         {
             try
             {
-                var server = (ComboBoxServers.SelectedItem as ServerViewModel).ServerName;
-                this._rpcManager.UpdateActivityToDynastio($"Playing {_gameManager.GetSelectedGame()}", $"Server {server}");
-
+                try
+                {
+                    this._rpcManager.UpdateActivityToDynastio($"Playing {_gameManager.GetSelectedGame()}", $"Server {GameManager.GetSelectedServer()}");
+                }
+                catch { }
                 GameManager.ChnagePlayerNickname(TextBoxNickname.Text);
-                GameManager.ChnagePlayerSelectedServer(server);
                 await _gameManager.OpenSelectedGameAsync();
 
                 this._rpcManager.UpdateActivityToLauncher("On Launcher", "Play Window");

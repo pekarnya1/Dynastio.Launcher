@@ -6,6 +6,7 @@ using Launcher.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,16 +43,18 @@ namespace Launcher.Controls
         {
             this.LabelTittle.Content = _userProfile.Nickname;
             this.LabelDescription.Text = "its a dynast.io user profile description";
-            this.LabelDetails.Content = _userProfile.Details;
+            this.LabelDetails.Text = _userProfile.Details;
             if (_userProfile.IsSelected)
             {
                 this.BtnAction.Content = "Modify";
                 this.BtnAction.IsEnabled = false;
+                this.BorderMain.BorderBrush = Brushes.Green;
             }
             else
             {
                 this.BtnAction.Content = "Select as Main";
                 this.BtnAction.IsEnabled = true;
+                this.BorderMain.BorderBrush = Brushes.Orange;
             }
             if (_userProfile.Profile != null)
             {
@@ -66,17 +69,36 @@ namespace Launcher.Controls
                     _userProfile.Profile = null;
                 }
             }
+            if (_userProfile.Personalchest != null)
+            {
+                try
+                {
+                    SetPersonalChest();
+                }
+                catch
+                {
+                    _userProfile.Personalchest = null;
+                }
+            }
         }
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 var data = TextBoxData.Text;
-                var profile = JsonConvert.DeserializeObject<Profile>(DataManager.Decrypt(data, "x"));
-                _userProfile.Profile = profile;
+                TextBoxData.Text = "";
+                var bdata = LauncherTransferDataModel.ToTransferDataModel(data);
+
+                _userProfile.Profile = bdata.Profile;
+                _userProfile.Personalchest = bdata.Personalchest;
+
+                UpdateControlToProfileView();
+                _profileManager.SaveChanges();
             }
-            catch { }
-            UpdateControlToProfileView();
+            catch
+            {
+                TextBoxData.Text = $"incorrect data, make sure you got version {App.version}.";
+            }
         }
         public void SetBadges()
         {
@@ -88,7 +110,16 @@ namespace Launcher.Controls
             this.PBtranslator.Source = new BitmapImage(new Uri(_userProfile.Profile.Badges.Where(a => a == BadgeType.Translator).Any() ? "Images/badges/translator.png".ResourcesPath() : "Images/_badges/translator.png".ResourcesPath()));
             this.PByoutuber.Source = new BitmapImage(new Uri(_userProfile.Profile.Badges.Where(a => a == BadgeType.Youtuber).Any() ? "Images/badges/youtuber.png".ResourcesPath() : "Images/_badges/youtuber.png".ResourcesPath()));
         }
-
+        public void SetPersonalChest()
+        {
+            foreach (var item in _userProfile.Personalchest.items)
+            {
+                var TargetElement = (Image)this.FindName($"ImagePchestSlot{(item.index + 1)}");
+                var imageUrl = $"Images/Inventory/{item.ItemType}.png".ResourcesPath();
+                var image = File.Exists(imageUrl) ? imageUrl : $"Images/Inventory/unknown.png".ResourcesPath();
+                TargetElement.Source = new BitmapImage(new Uri(image));
+            }
+        }
         private void BtnAction_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as Button).Content)

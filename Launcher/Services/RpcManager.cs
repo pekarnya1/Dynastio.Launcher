@@ -21,8 +21,15 @@ namespace Launcher.Services
         Discord.Discord _discord { get; set; }
         public void Intialize()
         {
-            _discord = new Discord.Discord(RpcManager.ApplicationId, (UInt64)CreateFlags.NoRequireDiscord);
-            RunCallbacks();
+            try
+            {
+                _discord = new Discord.Discord(RpcManager.ApplicationId, (UInt64)CreateFlags.NoRequireDiscord);
+                RunCallbacks();
+            }
+            catch
+            {
+
+            }
         }
         public Task RunCallbacks()
         {
@@ -44,6 +51,8 @@ namespace Launcher.Services
         {
             try
             {
+            if (_discord == null) Intialize();
+
                 var activityManager = _discord.GetActivityManager();
                 activityManager.UpdateActivity(new Activity()
                 {
@@ -73,6 +82,8 @@ namespace Launcher.Services
         {
             try
             {
+            if (_discord == null) Intialize();
+
                 var activityManager = _discord.GetActivityManager();
                 activityManager.UpdateActivity(new Activity()
                 {
@@ -91,7 +102,7 @@ namespace Launcher.Services
                         Start = DateTimeOffset.Now.ToUnixTimeSeconds()
                     },
                     Type = ActivityType.Playing
-                }, result => { });
+                }, result => {});
             }
             catch
             {
