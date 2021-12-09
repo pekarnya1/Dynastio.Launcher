@@ -14,7 +14,7 @@
             </Grid.ColumnDefinitions>
 
             <Border x:Name="BorderInformation" Background="#FFEFEFEF" CornerRadius="5,5,5,5" BorderThickness="1,1,1,1" Margin="0,0,2,0">
-              
+
                 <Grid>
                     <Button x:Name="BtnAction" Content="Action" Click="BtnAction_Click"  Margin="20,0,20,30" Height="25" BorderBrush="{x:Null}" Width="114" VerticalAlignment="Bottom"/>
                     <Button x:Name="BtnRemove" Content="Remove" Click="BtnRemove_Click" Margin="20,236,20,4" Height="25" BorderBrush="{x:Null}" Width="114" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
@@ -31,9 +31,9 @@
             <Border x:Name="BorderDataSet" Background="White" Margin="3,0,10,6" BorderBrush="#FFD2D2D2" BorderThickness="1,1,1,1" CornerRadius="3,3,3,3" Grid.Column="1" Height="24" VerticalAlignment="Bottom">
                 <Grid>
 
-                    <TextBox Margin="3,0,30,0" x:Name="TextBoxData" TextWrapping="Wrap" Text="" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC5C5C5" MaxLines="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
-                    <Button x:Name="BtnSet" Content="set" Click="BtnSet_Click" BorderBrush="{x:Null}" Padding="0,0,0,0" Background="#FFDDDDDD" Foreground="#FF3C3C3C" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="30"/>
-                    <Label Content="data" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="3,3,3,3" Foreground="#FFBBBBBB"/>
+
+                    <TextBox Margin="3,0,48,0" x:Name="TextBoxData" TextWrapping="Wrap" Text="" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC5C5C5" MaxLines="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                    <Button x:Name="BtnSet" Content="Set data" Click="BtnSet_Click" BorderBrush="{x:Null}" Padding="0,0,0,0" Background="#FFDDDDDD" Foreground="#FF3C3C3C" HorizontalAlignment="Right" Width="48" FontSize="8"/>
 
                 </Grid>
 
@@ -66,7 +66,7 @@
                     </Grid>
                 </Grid>
             </Border>
-            <Border x:Name="BorderPchest" Grid.Column="1" Margin="10,0,0,0" Background="#FFF3F3F3" BorderBrush="#FFA6A6A6" BorderThickness="2,2,2,2" CornerRadius="1,1,1,1" HorizontalAlignment="Left" Width="231" Height="174" VerticalAlignment="Center">
+            <Border x:Name="BorderPchest" Grid.Column="1" Margin="10,0,0,0" Background="#FFF3F3F3" BorderBrush="#FFD8D8D8" BorderThickness="2,2,2,2" CornerRadius="1,1,1,1" HorizontalAlignment="Left" Width="231" Height="174" VerticalAlignment="Center">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="36*"/>

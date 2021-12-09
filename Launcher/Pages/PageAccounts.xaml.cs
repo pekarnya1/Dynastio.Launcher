@@ -69,6 +69,7 @@ namespace Launcher.Pages
             };
             _profileManager.AddProfile(profile);
             ProfileManager.SaveProfile(profile);
+            _profileManager.SaveChanges();
             AddItem(profile);
             ChangeView(GridMain);
         }
