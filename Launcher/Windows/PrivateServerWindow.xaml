@@ -1,0 +1,128 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Launcher.Windows"
+        xmlns:Controls="clr-namespace:Launcher.Controls" x:Class="Launcher.Windows.PrivateServerWindow"
+        mc:Ignorable="d"
+        Title="PrivateServerWindow" Height="586" Width="943">
+    <Grid x:Name="GridMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="146"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="330"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FFCCCCCC" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label Content="Private Server" VerticalAlignment="Top" Margin="0,0,10,0" FontWeight="Bold"/>
+            <TextBox x:Name="TBName" HorizontalAlignment="Left" Margin="47,43,0,0" TextWrapping="Wrap" Text="private" VerticalAlignment="Top" Width="89" Background="#FFEBEBEB" BorderBrush="{x:Null}" Height="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Name" HorizontalAlignment="Left" Margin="3,42,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="TBRegion" HorizontalAlignment="Left" Margin="47,74,0,0" TextWrapping="Wrap" Text="private" VerticalAlignment="Top" Width="89" Background="#FFEBEBEB" BorderBrush="{x:Null}" Height="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Region" HorizontalAlignment="Left" Margin="3,73,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="TBMap" HorizontalAlignment="Left" Margin="47,106,0,0" TextWrapping="Wrap" Text="standard" VerticalAlignment="Top" Width="89" Background="#FFEBEBEB" BorderBrush="{x:Null}" Height="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Map" HorizontalAlignment="Left" Margin="3,105,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="BtnSaveChanges" Click="BtnSaveChanges_Click"  Content="Save Changes" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Height="30" Width="126" BorderBrush="#FFDFDFDF"/>
+            <TextBlock x:Name="LabelNote" Margin="0,225,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="203" Foreground="#FF540E0E" FontWeight="Bold"/>
+        </Grid>
+        <DataGrid x:Name="DGAccounts" Grid.Column="2" Margin="0,0,0,31" AutoGenerateColumns="False" Background="#FFDADADA" HorizontalGridLinesBrush="{x:Null}" IsReadOnly="True" BorderBrush="{x:Null}" RowHeight="25">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding name}" Header="Name" Foreground="#FF0E0E0E"/>
+                <DataGridTextColumn Binding="{Binding id}" Header="id" FontSize="10" Foreground="#FF0D0D0D"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="TBSearch" Grid.Column="2" HorizontalAlignment="Left" Margin="1,0,0,5" TextWrapping="Wrap" Text="Nickname or Id" VerticalAlignment="Bottom" Width="231" Height="23" Background="{x:Null}" Foreground="#FF121212" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" FontWeight="Normal"/>
+        <Button x:Name="BtnSearch" Grid.Column="2" Content="Search" HorizontalAlignment="Right" Margin="0,0,2,5" VerticalAlignment="Bottom" Height="23" BorderBrush="#FFD9D9D9" Background="#FFF6F6F6" Click="BtnSearch_Click" Width="91"/>
+        <Grid Grid.Column="1" Height="490" Margin="8,10,8,0" VerticalAlignment="Top">
+            <Label x:Name="LabelName" Content="Name" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="219" FontWeight="Bold"/>
+            <Label x:Name="LabelId" Content="Id" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="219" FontWeight="Bold"/>
+            <Border HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="286" Height="291" CornerRadius="5,5,5,5" BorderBrush="#FFC8C8C8" BorderThickness="1,1,1,1" >
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE7E7E7"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Margin="4,3,4,5" Background="#FFF4F4F4">
+                    <Controls:PersonalChestControl x:Name="personalchest" Margin="6,28,0,0" Height="209" VerticalAlignment="Top" HorizontalAlignment="Left" Width="260"/>
+
+                    <Label x:Name="LabelId_Copy" Content="Personal Chest" FontWeight="Bold" Background="{x:Null}" Margin="6,0,0,0" HorizontalAlignment="Left" Width="244" Foreground="#FF070707" Height="35" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="CBSlot" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="46" SelectedIndex="0">
+                        <TabItem Content="1"/>
+                        <TabItem Content="2"/>
+                        <TabItem Content="3"/>
+                        <TabItem Content="4"/>
+                        <TabItem Content="5"/>
+                        <TabItem Content="6"/>
+                        <TabItem Content="7"/>
+                        <TabItem Content="8"/>
+                        <TabItem Content="9"/>
+                        <TabItem Content="10"/>
+                        <TabItem Content="11"/>
+                        <TabItem Content="12"/>
+                        <TabItem Content="13"/>
+                        <TabItem Content="14"/>
+                        <TabItem Content="15"/>
+                        <TabItem Content="16"/>
+                        <TabItem Content="17"/>
+                        <TabItem Content="18"/>
+                        <TabItem Content="19"/>
+                        <TabItem Content="20"/>
+                    </ComboBox>
+                    <ComboBox x:Name="CBItem" HorizontalAlignment="Left" Margin="61,247,0,0" VerticalAlignment="Top" Width="99" SelectedIndex="0"/>
+                    <Button x:Name="BtnSetSlot" Content="Set" HorizontalAlignment="Left" Margin="228,248,0,0" VerticalAlignment="Top" Width="38" Height="21" Click="BtnSetSlot_Click"/>
+                    <TextBox x:Name="TBDurablity" HorizontalAlignment="Left" Margin="165,249,0,0" TextWrapping="Wrap" Text="Durablity" VerticalAlignment="Top" Width="58" Height="20"/>
+                </Grid>
+            </Border>
+            <WrapPanel Margin="312,191,0,0" Height="154" VerticalAlignment="Top" HorizontalAlignment="Left" Width="129" Background="#FFFAFAFA">
+                <Label x:Name="LabelId_Copy1" Content="Badges" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" FontWeight="Bold" Background="{x:Null}"/>
+                <CheckBox x:Name="BadgeAdministrator" Content="Administrator" Height="18" Width="103" FontWeight="Normal">
+                    <CheckBox.Background>
+                        <ImageBrush ImageSource="/Resources/Images/badges/administrator.png"/>
+                    </CheckBox.Background>
+                </CheckBox>
+                <CheckBox x:Name="BadgeDeveloper" Content="Developer" Height="18" Width="103">
+                    <CheckBox.Background>
+                        <ImageBrush ImageSource="/Resources/Images/badges/developer.png"/>
+                    </CheckBox.Background>
+                </CheckBox>
+                <CheckBox x:Name="BadgeMonthly" Content="Monthly" Height="18" Width="103">
+                    <CheckBox.Background>
+                        <ImageBrush ImageSource="/Resources/Images/badges/monthly.png"/>
+                    </CheckBox.Background>
+                </CheckBox>
+                <CheckBox x:Name="BadgeSupporter" Content="Supporter" Height="19" Width="103">
+                    <CheckBox.Background>
+                        <ImageBrush ImageSource="/Resources/Images/badges/supporter.png"/>
+                    </CheckBox.Background>
+                </CheckBox>
+                <CheckBox x:Name="BadgeTranslator" Content="Translator" Height="19" Width="103">
+                    <CheckBox.Background>
+                        <ImageBrush ImageSource="/Resources/Images/badges/translator.png"/>
+                    </CheckBox.Background>
+                </CheckBox>
+                <CheckBox x:Name="BadgeYoutuber" Content="Youtuber" Height="19" Width="103">
+                    <CheckBox.Background>
+                        <ImageBrush ImageSource="/Resources/Images/badges/youtuber.png"/>
+                    </CheckBox.Background>
+                </CheckBox>
+                <CheckBox x:Name="BadgeFriend" Content="Friend" Height="19" Width="103">
+                    <CheckBox.Background>
+                        <ImageBrush ImageSource="/Resources/Images/badges/friend.png"/>
+                    </CheckBox.Background>
+                </CheckBox>
+
+            </WrapPanel>
+            <TextBox x:Name="TBCoins" HorizontalAlignment="Left" Margin="69,56,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Height="22" Background="#FFD4D4D1" BorderBrush="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="LabelId_Copy2" Content="Coins" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+            <Label x:Name="LabelDetails" Content="details" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Width="315"/>
+        </Grid>
+        <Button x:Name="BtnUpdateUser" Content="Update User" Margin="0,0,10,16" Height="33" VerticalAlignment="Bottom" Background="#FFE3E3E3" BorderBrush="{x:Null}" HorizontalAlignment="Right" Width="150" Grid.Column="1" Click="BtnUpdateUser_Click"/>
+        <Button x:Name="BtnRefreshData" Grid.Column="1" Content="Refresh Data" HorizontalAlignment="Right" Margin="0,10,5,0" VerticalAlignment="Top" Height="37" Width="108" Background="#FFFFF791" Click="BtnRefreshData_Click"/>
+    </Grid>
+</Window>

@@ -70,6 +70,20 @@ namespace Launcher.Controls
             BtnOpenFolder.IsEnabled = false;
             BtnUninstall.IsEnabled = true;
         }
+        void UpdateControlToFaildDownloadingMode()
+        {
+            this.ProgressBar.Visibility = Visibility.Hidden;
+            this.LabelTittle.Text = _game.Tittle;
+            this.LabelDetails.Text = _game.Details;
+            this.LabelDescription.Text = _game.Description;
+            this.LabelAttention.Text = "";
+            this.ImageAvatar.Source = new BitmapImage(new Uri(_game.ImageDirectory.ResourcesPath()));
+
+            BtnAction.Content = "Retry";
+            BtnAction.IsEnabled = true;
+            BtnOpenFolder.IsEnabled = false;
+            BtnUninstall.IsEnabled = true;
+        }
         public void UpdateControlToDownloadingMode()
         {
             BtnAction.Content = "Cancel";
@@ -136,7 +150,7 @@ namespace Launcher.Controls
             _client.Dispose();
             this.Dispatcher.Invoke(() =>
             {
-                UpdateControlToDownloadMode();
+                UpdateControlToFaildDownloadingMode();
             });
         }
         public void UpdateDownloadStatus(string details, int progressValue)
@@ -146,7 +160,7 @@ namespace Launcher.Controls
         }
 
         WebClient _client;
-        void Download()
+        void Download(bool retryMode = false)
         {
             UpdateControlToDownloadingMode();
             _ = Task.Run(async () =>
@@ -154,8 +168,21 @@ namespace Launcher.Controls
                 FileManager.DeleteGameFiles(_game, true, false);
 
                 _client = new WebClient();
-                _client.DownloadFileCompleted += delegate { InstallGame(); };
-                _client.DownloadProgressChanged += (s, ee) =>
+                _client.Headers["User-Agent"] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+
+                _client.DownloadFileCompleted += _client_DownloadFileCompleted;
+                void _client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+                {
+                    if (e.Error == null || !e.Cancelled)
+                    {
+                        InstallGame();
+                        return;
+                    }
+                    StopDownload();
+                }
+
+                _client.DownloadProgressChanged += _client_DownloadProgressChanged;
+                void _client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs ee)
                 {
                     double bytesIn = double.Parse(ee.BytesReceived.ToString());
                     double totalBytes = double.Parse(ee.TotalBytesToReceive.ToString());
@@ -167,16 +194,20 @@ namespace Launcher.Controls
                         var progressValue = int.Parse(Math.Truncate(percentage).ToString());
                         UpdateDownloadStatus(details, progressValue);
                     });
-                };
+                }
+
                 await _client.DownloadFileTaskAsync(new Uri(_game.Update.DownloadLink), $@"{FileManager.DownloadGamePath}{_game.Id}.dy");
             });
         }
+
+
 
         private void BtnAction_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as Button).Content)
             {
-                case "Download & Install": Download(); break;
+                case "Download & Install": Download(false); break;
+                case "Retry": Download(true); break;
                 case "Launch": LaunchGame(); break;
                 case "Cancel": StopDownload(); break;
                 case "Select As Main": SetGameAsMain(); break;

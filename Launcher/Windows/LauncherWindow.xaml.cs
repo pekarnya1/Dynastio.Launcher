@@ -1,5 +1,6 @@
 ﻿using Launcher.Controls;
 using Launcher.Extensions;
+using Launcher.Managers;
 using Launcher.Pages;
 using Launcher.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,7 +39,7 @@ namespace Launcher.Windows
 
             InitializeComponent();
             Initialize();
-            ChangeView("BtnAppVersion");
+            ChangeView(Views.BtnChangeLogApp);
         }
         public void Initialize()
         {
@@ -49,21 +50,19 @@ namespace Launcher.Windows
                 this.Visibility = Visibility.Collapsed;
             };
         }
-        public void TabItem_MouseUp(object sender, MouseButtonEventArgs e)
+        public enum Views { None, BtnPlay, BtnManager, BtnAboutUs, BtnAccounts, BtnChangeLogGame, BtnChangeLogGameNightly, BtnChangeLogApp, BtnPrivateServer }
+        public void ChangeView(Views view = Views.None)
         {
-            ChangeView((sender as TabItem).Header.ToString());
-        }
-        public void ChangeView(string view)
-        {
-            switch (view)
+            switch (view.ToString())
             {
-                case "BtnPlay": this.FrameMain.Content = new PageHome(_services); break;
+                case "BtnPlay": this.FrameMain.Content = new PageHome(_services, this); break;
                 case "BtnManager": this.FrameMain.Content = _pageDynastio; break;
                 case "BtnAboutUs": this.FrameMain.Content = new PageAbout(_appManager.Configuration); break;
                 case "BtnAccounts": this.FrameMain.Content = new PageAccounts(_services); break;
                 case "BtnChangeLogGame": ShowPage(App.dynastioChangelog); break;
                 case "BtnChangeLogGameNightly": ShowPage(App.dynastioNightlyChangelog); break;
                 case "BtnChangeLogApp": ShowPage(App.appChangesUrl); break;
+                case "BtnPrivateServer": new PrivateServerWindow(_services).Show(); break;
             }
         }
         void ShowPage(string url)
@@ -72,14 +71,10 @@ namespace Launcher.Windows
             web.Navigate(new Uri(url));
             this.FrameMain.Content = web;
         }
-        private void LabelAppVersion_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            ChangeView("Main");
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ChangeView((sender as Button).Name.ToString());
+            ChangeView((sender as Button).Name.ToString().ParseEnum<Views>());
         }
     }
 }

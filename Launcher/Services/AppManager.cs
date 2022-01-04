@@ -22,10 +22,9 @@ namespace Launcher.Services
             this._fileManager = services.GetRequiredService<FileManager>();
         }
         public Configuration Configuration { get; set; }
-        public Task InitializeAsync()
+        public void InitializeAsync()
         {
             Configuration = FileManager.GetConfiguration();
-            return Task.CompletedTask;
         }
         public static void CreateDirectoriesIfNotExist()
         {

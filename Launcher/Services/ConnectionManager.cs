@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Launcher.Extensions;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -8,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace Launcher.Services
 {
+
     internal class ConnectionManager
     {
+
 
         public static long GetFileSize(string uri, int timeout = 5000)
         {
@@ -50,5 +54,6 @@ namespace Launcher.Services
                 return null;
             }
         }
+
     }
 }

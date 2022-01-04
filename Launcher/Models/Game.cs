@@ -47,6 +47,7 @@ namespace Launcher.Models
         public DateTime InstalledAt { get; set; }
         public bool IsSelected { get; set; }
         public bool IncludePrivateServers { get; set; }
+
         public string Details
         {
             get

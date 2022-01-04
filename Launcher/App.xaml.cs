@@ -11,6 +11,7 @@ using Dynastio.Api;
 using Launcher.Services;
 using Launcher.Extensions;
 using Launcher.Models;
+using Launcher.Managers;
 
 namespace Launcher
 {
@@ -19,20 +20,22 @@ namespace Launcher
     /// </summary>
     public partial class App : Application
     {
-        public const string version = "1.0.3";
+        public const string version = "1.0.4";
         public const string discordurl = "https://discord.gg/x5j4cZtnWR";
         public const string dynastioChangelog = "https://dynast.io/changelog.txt";
         public const string dynastioNightlyChangelog = "https://nightly.dynast.io/changelog.txt";
         public const string appChangesUrl = "https://galalzhaleh.github.io/Dynastio.Launcher/changelog.txt";
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+
+
             try
             {
-                StartupAsync().GetAwaiter().GetResult();
+                StartMain();
             }
-            catch
+            catch (Exception er)
             {
-                MessageBox.Show("An error occurred, Make sure that you are connected to the internet, if not fixed then report this bug to develoeprs.");
+                MessageBox.Show("An error occurred, report this bug to develoeprs.");
 
             }
             finally
@@ -40,7 +43,7 @@ namespace Launcher
                 Environment.Exit(0);
             }
         }
-        public async Task StartupAsync()
+        public void StartMain()
         {
             using (var services = ConfigureServices())
             {
@@ -48,13 +51,13 @@ namespace Launcher
                 services.GetRequiredService<ConnectionManager>();
                 services.GetRequiredService<DynastClient>().WithDatabases("api.json".ResourcesPath());
 
-                services.GetRequiredService<RpcManager>().Intialize();
+               services.GetRequiredService<RpcManager>().Intialize();
 
                 services.GetRequiredService<ProfileManager>();
-                services.GetRequiredService<GameManager>();
+                services.GetRequiredService<AppManager>().InitializeAsync();
 
-                var app = services.GetRequiredService<AppManager>();
-                await app.InitializeAsync();
+                var gameManager = services.GetRequiredService<GameManager>();
+
 
                 AppManager.CreateDirectoriesIfNotExist();
 

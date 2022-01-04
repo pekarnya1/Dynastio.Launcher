@@ -62,6 +62,7 @@ namespace Launcher.Services
         {
             FileManager.DeleteGameFiles(game, false);
             ZipFile.ExtractToDirectory($@"{FileManager.DownloadGamePath}{game.Id}.dy", $@"{FileManager.InstallGamesPath}{game.Id}");
+            game.Update = null;
         }
 
         public async Task OpenSelectedGameAsync()

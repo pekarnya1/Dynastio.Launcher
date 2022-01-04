@@ -8,6 +8,10 @@ namespace Launcher.Extensions
 {
     internal static class ByteExtensions
     {
+        public static string BinaryToText(this byte[] data)
+        {
+            return Encoding.UTF8.GetString(data);
+        }
         public enum SizeUnits
         {
             Byte, KB, MB, GB, TB, PB, EB, ZB, YB

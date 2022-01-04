@@ -1,4 +1,8 @@
-﻿1.0.3 - 2021-12-09
+﻿1.0.4 - 2022-01-05
+- Support Private Servers (beta)
+- Improve
+
+1.0.3 - 2021-12-09
 - Adding nightly change log.
 - Remove change server before playing.
 - Adding Personal-Chest

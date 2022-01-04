@@ -73,7 +73,7 @@ namespace Launcher.Controls
             {
                 try
                 {
-                    SetPersonalChest();
+                    Pchest.SetPersonalChest(_userProfile.Personalchest);
                 }
                 catch
                 {
@@ -110,16 +110,7 @@ namespace Launcher.Controls
             this.PBtranslator.Source = new BitmapImage(new Uri(_userProfile.Profile.Badges.Where(a => a == BadgeType.Translator).Any() ? "Images/badges/translator.png".ResourcesPath() : "Images/_badges/translator.png".ResourcesPath()));
             this.PByoutuber.Source = new BitmapImage(new Uri(_userProfile.Profile.Badges.Where(a => a == BadgeType.Youtuber).Any() ? "Images/badges/youtuber.png".ResourcesPath() : "Images/_badges/youtuber.png".ResourcesPath()));
         }
-        public void SetPersonalChest()
-        {
-            foreach (var item in _userProfile.Personalchest.items)
-            {
-                var TargetElement = (Image)this.FindName($"ImagePchestSlot{(item.index + 1)}");
-                var imageUrl = $"Images/Inventory/{item.ItemType}.png".ResourcesPath();
-                var image = File.Exists(imageUrl) ? imageUrl : $"Images/Inventory/unknown.png".ResourcesPath();
-                TargetElement.Source = new BitmapImage(new Uri(image));
-            }
-        }
+
         private void BtnAction_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as Button).Content)
